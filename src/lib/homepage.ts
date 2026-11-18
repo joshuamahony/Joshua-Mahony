@@ -3,13 +3,13 @@ import { escapeHtml } from './format';
 type Home = typeof import('../data/homepage.json');
 const e = escapeHtml;
 const lines = (s:string) => e(s).replace(/\n/g,'<br>');
-const safeUrl=(raw:string) => { try { const url=new URL(raw); return ['https:','http:'].includes(url.protocol)?e(raw):'#'; } catch{return '#';} };
+const safeUrl=(raw:string) => { if(/^\/(?!\/)[^\s<>\"']*$/.test(raw)) return e(raw); try { const url=new URL(raw); return ['https:','http:'].includes(url.protocol)?e(raw):'#'; } catch{return '#';} };
 const mailto=(email:string,subject?:string) => 'mailto:'+encodeURIComponent(email)+(subject?'?subject='+encodeURIComponent(subject):'');
 function section(doc:string, start:string, end:string, apply:(s:string)=>string) {
   const i=doc.indexOf(start);
   const j=doc.indexOf(end,i+start.length);
   if(i<0||j<0)throw new Error('Homepage template missing section: '+start);
-  return doc.slice(0,i)+apply(doc.slice(i,j))+doc.slice(j);
+  return doc.slice(0,i)+apply(doc.slice(i,j+end.length))+doc.slice(j+end.length);
 }
 function swap(s:string,pattern:RegExp,value:string,tag:string){
   if(!pattern.test(s))throw new Error('Homepage field missing: '+tag);

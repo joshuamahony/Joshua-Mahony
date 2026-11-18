@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "eyebrow": "London-based / Global perspective",
+    "name": "Joshua Mahony",
+    "role": "Financial Market Analyst & Broadcast Commentator",
+    "introduction": "Independent macroeconomic, FX, and commodities commentary, live broadcast analysis, and multimedia content.",
+    "headshot": ""
+  },
+  "about": {
+    "headline": "Making sense of moving markets.",
+    "paragraph1": "I'm a London-based financial market analyst and broadcast commentator specialising in global macroeconomics, foreign exchange, and commodities.",
+    "paragraph2": "I turn complex financial developments into clear, timely insights — whether that means explaining a central bank decision live on air, writing a market outlook, or producing engaging content for investors and wider audiences.",
+    "expertise": [
+      {
+        "title": "Macroeconomics & central banks",
+        "description": "Monetary policy, inflation, growth and the global economic outlook."
+      },
+      {
+        "title": "FX & cross-asset markets",
+        "description": "Major currencies, bond yields, equities and cross-market drivers."
+      },
+      {
+        "title": "Commodities & geopolitical risk",
+        "description": "Oil, gold, industrial metals and macroeconomic shocks."
+      },
+      {
+        "title": "Broadcast storytelling",
+        "description": "Live television interviews, financial education and audience-first analysis."
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "180",
+      "label": "Live TV appearances in 2025"
+    },
+    {
+      "value": "Daily",
+      "label": "Market briefings & insights"
+    },
+    {
+      "value": "Live",
+      "label": "Webinars & event hosting"
+    }
+  ],
+  "broadcasts": [
+    {
+      "type": "broadcast",
+      "network": "BBC",
+      "date": "",
+      "title": "Rates, risk and the dollar",
+      "summary": "How shifting interest-rate expectations ripple across currency and equity markets.",
+      "url": "https://www.youtube.com/@TheJoshmahony/videos",
+      "thumbnail": ""
+    },
+    {
+      "type": "broadcast",
+      "network": "Sky News",
+      "date": "",
+      "title": "Global markets under pressure",
+      "summary": "Breaking down volatility, policy uncertainty and the cross-asset response.",
+      "url": "https://x.com/JoshuaMahony",
+      "thumbnail": ""
+    },
+    {
+      "type": "broadcast",
+      "network": "TRT World",
+      "date": "",
+      "title": "Oil, inflation & emerging markets",
+      "summary": "Why energy prices and Treasury yields matter for developing economies.",
+      "url": "https://www.youtube.com/@TheJoshmahony/videos",
+      "thumbnail": ""
+    },
+    {
+      "type": "longform",
+      "network": "YouTube",
+      "date": "",
+      "title": "The week ahead: what matters",
+      "summary": "The key catalysts, central bank events and assets to watch next week.",
+      "url": "https://www.youtube.com/@TheJoshmahony/videos",
+      "thumbnail": ""
+    },
+    {
+      "type": "longform",
+      "network": "YouTube",
+      "date": "",
+      "title": "Gold, yields and the Fed",
+      "summary": "Exploring real rates, haven demand and the changing commodity outlook.",
+      "url": "https://www.youtube.com/@TheJoshmahony/videos",
+      "thumbnail": ""
+    },
+    {
+      "type": "short",
+      "network": "YouTube Shorts",
+      "date": "",
+      "title": "The 60-second market pulse",
+      "summary": "A quick, accessible take on one of the biggest stories moving markets.",
+      "url": "https://www.youtube.com/@TheJoshmahony/shorts",
+      "thumbnail": ""
+    }
+  ],
+  "services": [
+    {
+      "title": "Broadcast & Media Commentary",
+      "description": "Clear, confident market perspectives for TV, radio, live interviews and podcasts.",
+      "subject": "Broadcast commentary enquiry"
+    },
+    {
+      "title": "Research & Written Analysis",
+      "description": "Bespoke client notes, broker research commentary and editorial market analysis.",
+      "subject": "Research and analysis enquiry"
+    },
+    {
+      "title": "Webinars & Content Production",
+      "description": "Live market outlooks, hosted sessions, educational videos and multimedia briefings.",
+      "subject": "Webinars and content enquiry"
+    }
+  ],
+  "contact": {
+    "headline": "Need a market voice worth listening to?",
+    "description": "For interviews, commentary, research projects, speaking engagements and content partnerships, get in touch.",
+    "email": "contact@joshua-mahony.com",
+    "linkedin": "https://www.linkedin.com/in/joshua-mahony-msta-1702792a/",
+    "x": "https://x.com/JoshuaMahony",
+    "youtube": "https://www.youtube.com/@TheJoshmahony"
+  }
+}

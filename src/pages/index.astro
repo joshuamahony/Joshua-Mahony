@@ -1,5 +1,7 @@
 ---
 import { original } from '../lib/original';
+import homepageData from '../data/homepage.json';
+import { applyHomepageData } from '../lib/homepage';
 import { getPublishedArticles, formatDate, escapeHtml } from '../lib/format';
 
 const articles = (await getPublishedArticles()).slice(0, 4);
@@ -12,7 +14,7 @@ const rows = articles.length
     </article>`).join('')
   : '<p style="padding:24px 0;color:#536376">New market commentary will appear here as articles are published.</p>';
 
-let homepage = original.replace(
+let homepage = applyHomepageData(original, homepageData).replace(
   /(<div class="article-list">)[\s\S]*?(<\/div>\s*<p class="placeholder-note">[\s\S]*?<\/p>)/,
   `$1${rows}</div><p class="placeholder-note"><a href="/commentary/">Browse the complete commentary archive →</a></p>`
 );

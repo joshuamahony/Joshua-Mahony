@@ -46,21 +46,21 @@
   "broadcasts": [
     {
       "type": "broadcast",
-      "network": "Sky News",
+      "network": "CGTN Europe",
       "date": "",
-      "title": "Global markets under pressure",
-      "summary": "Breaking down volatility, policy uncertainty and the cross-asset response.",
+      "title": "Post election fallout as dollar rallies and stocks retreat",
+      "summary": "Trump lost both House and Senate at the Midterms, with tech stocks getting hit hard on datacentre concerns. ",
       "url": "https://x.com/JoshuaMahony",
-      "thumbnail": ""
+      "thumbnail": "/uploads/screenshot-2026-11-18-at-22.59.19.png"
     },
     {
       "type": "broadcast",
       "network": "TRT World",
       "date": "",
-      "title": "Oil, inflation & emerging markets",
-      "summary": "Why energy prices and Treasury yields matter for developing economies.",
-      "url": "https://www.youtube.com/@TheJoshmahony/videos",
-      "thumbnail": ""
+      "title": "AI theme dominates as SK Hynix and Anthropic grab the headlines",
+      "summary": "SK Hynix shares have suffered despite early optimism at the open. Meanwhile, investors weigh up the strength of Anthropic as the loss-making giant prepares to turn the Mag7 into the Mag8",
+      "url": "https://www.youtube.com/watch?v=YAqvRMiu3d8&list=PLg11ktZFRqG2dMw5CrrqeDgEUyKRsbqiL&index=1",
+      "thumbnail": "/uploads/screenshot-2026-11-18-at-22.51.20.png"
     },
     {
       "type": "longform",

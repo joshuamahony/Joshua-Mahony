@@ -29,3 +29,6 @@ Create a **new** Cloudflare Worker linked to the development branch (do not over
 The site contains no authored articles yet, so the homepage and archive show an empty state. Publish a genuine sample article to test the new workflow.
 
 See `CMS-SETUP.md` for remaining authentication and launch tasks.
+
+## Cloudflare staging connection
+The separate `jm-articles-test` Worker has been connected to the `feature/articles-cms` branch. A new commit triggers its first Cloudflare build. Production remains unchanged.

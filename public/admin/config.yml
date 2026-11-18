@@ -1,0 +1,37 @@
+# Joshua Mahony — article editor configuration
+# STAGING ONLY: Configure secure GitHub OAuth before testing sign-in.
+# The CMS writes directly to the development branch until launch.
+backend:
+  name: github
+  repo: joshuamahony/Joshua-Mahony
+  branch: feature/articles-cms
+  # Add base_url for the separately hosted GitHub OAuth bridge once configured.
+  # base_url: https://YOUR-AUTH-WORKER.workers.dev
+
+site_url: https://joshua-mahony.com
+display_url: https://joshua-mahony.com
+publish: false
+media_folder: public/uploads
+public_folder: /uploads
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+collections:
+  - name: articles
+    label: Market Commentary
+    label_singular: Article
+    folder: src/content/articles
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title", "category"]
+    fields:
+      - { label: Headline, name: title, widget: string }
+      - { label: Publish date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: Category, name: category, widget: select, options: ["Macroeconomics", "FX & Currencies", "Commodities", "Equities", "Central Banks", "Market Outlook"] }
+      - { label: Summary, name: description, widget: text, hint: "Shown on the homepage, article archive and search results." }
+      - { label: Hero image, name: image, widget: image, required: false }
+      - { label: Article content, name: body, widget: markdown, hint: "Add headings, paragraphs, links and uploaded chart images." }

@@ -1,0 +1,74 @@
+---
+import { originalCSS, faviconTags, headerHtml, footerHtml } from '../lib/original';
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+const { title, description, image } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const menuScript = `
+  (() => {
+    const button = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (!button || !nav) return;
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      button.textContent = open ? '×' : '☰';
+      nav.classList.toggle('is-open', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+  })();
+`;
+---
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#102033" />
+    <title>{title} | Joshua Mahony</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.toString()} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site).toString()} />}
+    <Fragment set:html={faviconTags} />
+    <Fragment set:html={'<style>' + originalCSS + '</style>'} />
+    <style is:global>
+      .editorial-wrap { max-width: 850px; width: calc(100% - 48px); margin: 0 auto; padding: 74px 0 100px; }
+      .editorial-back { color: #92754d; font-size: 13px; font-weight: 700; }
+      .editorial-label { margin-top: 50px; font-size: 12px; text-transform: uppercase; letter-spacing: .16em; color: #977c55; font-weight: 800; }
+      .editorial-title { font: 400 clamp(38px,6vw,66px)/1.09 Georgia,serif; letter-spacing: -.045em; margin: 18px 0 24px; }
+      .editorial-summary { font-size: 19px; color: #536376; line-height: 1.7; max-width: 700px; }
+      .editorial-byline { font-size: 13px; color: #68798b; margin: 26px 0 34px; }
+      .editorial-hero { width: 100%; height: auto; max-height: 540px; object-fit: cover; margin: 0 0 35px; }
+      .editorial-body { max-width: 710px; font-size: 17px; line-height: 1.85; color: #283b4d; overflow-wrap: anywhere; }
+      .editorial-body h2, .editorial-body h3 { color: #102033; font: 400 32px/1.2 Georgia,serif; margin: 43px 0 16px; }
+      .editorial-body h3 { font-size: 25px; }
+      .editorial-body p { margin: 0 0 24px; }
+      .editorial-body a { color: #8e6e3f; text-decoration: underline; }
+      .editorial-body img { display: block; max-width: 100%; height: auto; margin: 29px 0; }
+      .editorial-body blockquote { border-left: 3px solid #b29a70; padding-left: 22px; margin: 30px 0; color: #536376; }
+      .editorial-body figcaption, .editorial-body em { color: #536376; }
+      .editorial-body ul, .editorial-body ol { margin-bottom: 25px; }
+      .archive-entry { padding: 25px 0; border-bottom: 1px solid #e2e7e8; }
+      .archive-entry h2 { font: 400 29px/1.23 Georgia,serif; margin: 8px 0; }
+      .archive-entry h2 a:hover { text-decoration: underline; }
+      .archive-entry p { color: #536376; margin: 0; }
+      .archive-meta { font-size: 12px; color: #987b56; text-transform: uppercase; letter-spacing: .07em; }
+      @media(max-width: 600px) { .editorial-wrap { padding: 45px 0 65px; } .editorial-body { font-size: 16px; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <Fragment set:html={headerHtml} />
+    <main id="main">
+      <slot />
+    </main>
+    <Fragment set:html={footerHtml} />
+    <script is:inline set:html={menuScript} />
+  </body>
+</html>

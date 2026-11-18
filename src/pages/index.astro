@@ -1,0 +1,23 @@
+---
+import { original } from '../lib/original';
+import { getPublishedArticles, formatDate, escapeHtml } from '../lib/format';
+
+const articles = (await getPublishedArticles()).slice(0, 4);
+const rows = articles.length
+  ? articles.map(({ id, data }) => `
+    <article class="article-row">
+      <div class="article-meta"><strong>${escapeHtml(data.category)}</strong><time datetime="${data.date.toISOString().slice(0, 10)}">${escapeHtml(formatDate(data.date))}</time></div>
+      <div class="article-main"><h3><a href="/commentary/${encodeURIComponent(id)}/">${escapeHtml(data.title)}</a></h3><p>${escapeHtml(data.description)}</p></div>
+      <a class="article-action" href="/commentary/${encodeURIComponent(id)}/">Read Analysis <span aria-hidden="true">→</span></a>
+    </article>`).join('')
+  : '<p style="padding:24px 0;color:#536376">New market commentary will appear here as articles are published.</p>';
+
+let homepage = original.replace(
+  /(<div class="article-list">)[\s\S]*?(<\/div>\s*<p class="placeholder-note">[\s\S]*?<\/p>)/,
+  `$1${rows}</div><p class="placeholder-note"><a href="/commentary/">Browse the complete commentary archive →</a></p>`
+);
+if (!homepage.includes('Browse the complete commentary archive')) {
+  throw new Error('Original homepage article section changed: unable to insert the CMS feed safely.');
+}
+--- 
+<Fragment set:html={homepage} />

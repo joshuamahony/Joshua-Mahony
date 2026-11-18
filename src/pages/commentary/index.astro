@@ -1,0 +1,21 @@
+---
+import EditorialLayout from '../../layouts/EditorialLayout.astro';
+import { getPublishedArticles, formatDate } from '../../lib/format';
+const articles = await getPublishedArticles();
+---
+<EditorialLayout title="Market Commentary & Insights" description="Joshua Mahony's market commentary on macroeconomics, foreign exchange, commodities and central banks.">
+  <div class="editorial-wrap">
+    <a class="editorial-back" href="/#commentary">← Back to portfolio</a>
+    <div class="editorial-label">Research / Market perspectives</div>
+    <h1 class="editorial-title">Commentary &amp; insights.</h1>
+    <p class="editorial-summary">Independent perspectives on global markets, currencies, commodities and central bank policy.</p>
+    {articles.length === 0 && <p class="editorial-summary">Articles will appear here as they're published.</p>}
+    {articles.map(({ id, data }) => (
+      <article class="archive-entry">
+        <div class="archive-meta"><time datetime={data.date.toISOString().slice(0,10)}>{formatDate(data.date)}</time> · {data.category}</div>
+        <h2><a href={`/commentary/${encodeURIComponent(id)}/`}>{data.title}</a></h2>
+        <p>{data.description}</p>
+      </article>
+    ))}
+  </div>
+</EditorialLayout>

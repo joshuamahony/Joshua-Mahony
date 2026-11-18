@@ -5,8 +5,8 @@ backend:
   name: github
   repo: joshuamahony/Joshua-Mahony
   branch: feature/articles-cms
-  # Add base_url for the separately hosted GitHub OAuth bridge once configured.
-  # base_url: https://YOUR-AUTH-WORKER.workers.dev
+  base_url: https://jm-cms-auth.josh-mahony.workers.dev
+  auth_endpoint: /auth
 
 site_url: https://joshua-mahony.com
 display_url: https://joshua-mahony.com

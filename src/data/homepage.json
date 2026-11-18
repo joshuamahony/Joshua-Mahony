@@ -46,15 +46,6 @@
   "broadcasts": [
     {
       "type": "broadcast",
-      "network": "BBC",
-      "date": "",
-      "title": "Rates, risk and the dollar",
-      "summary": "How shifting interest-rate expectations ripple across currency and equity markets.",
-      "url": "https://www.youtube.com/@TheJoshmahony/videos",
-      "thumbnail": ""
-    },
-    {
-      "type": "broadcast",
       "network": "Sky News",
       "date": "",
       "title": "Global markets under pressure",

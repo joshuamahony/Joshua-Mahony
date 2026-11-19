@@ -114,6 +114,15 @@
     .media-logos .sky b { color: #8398a9; }
     .media-logos .trt { letter-spacing: -.035em; }
     .media-logos .cgtn { letter-spacing: .04em; }
+    /* Official network marks: preserve each broadcaster's own colours. */
+    .media-logos .network-logo { display: block; width: auto; max-width: 145px; height: 34px; object-fit: contain; flex: 0 1 auto; }
+    .media-logos .network-logo-bbc { max-width: 96px; height: 31px; }
+    .media-logos .network-logo-sky { max-width: 116px; }
+    .media-logos .network-logo-bloomberg { max-width: 145px; }
+    .media-logos .network-logo-trt { max-width: 132px; }
+    .media-logos .network-logo-cgtn { max-width: 135px; height: 44px; }
+    .media-logos .network-logo-cnbc { max-width: 110px; height: 46px; }
+
     /* ABOUT */
     .about { background: var(--cream); }
     .about-grid { display: grid; grid-template-columns: .9fr 1fr; gap: clamp(54px, 9vw, 136px); }
@@ -319,12 +328,12 @@
       <div class="container media-inner">
         <div class="media-caption">Featured across<br>global media</div>
         <div class="media-logos" aria-label="Broadcast networks">
-          <span class="bbc" aria-label="BBC"><b>B</b><b>B</b><b>C</b></span>
-          <span class="sky">sky <b>news</b></span>
-          <span>Bloomberg</span>
-          <span class="trt">TRT WORLD</span>
-          <span class="cgtn">CGTN EUROPE</span>
-          <span>CNBC ARABIA</span>
+          <img class="network-logo network-logo-bbc" src="https://commons.wikimedia.org/wiki/Special:FilePath/BBC_Logo_2021.svg" alt="BBC" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+          <img class="network-logo network-logo-sky" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sky_News_2026.svg" alt="Sky News" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+          <img class="network-logo network-logo-bloomberg" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_Bloomberg_Logo.svg" alt="Bloomberg" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+          <img class="network-logo network-logo-trt" src="https://commons.wikimedia.org/wiki/Special:FilePath/TRT_World_logo.svg" alt="TRT World" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+          <img class="network-logo network-logo-cgtn" src="https://commons.wikimedia.org/wiki/Special:FilePath/CGTN_Europe_Logo.png" alt="CGTN Europe" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+          <img class="network-logo network-logo-cnbc" src="https://commons.wikimedia.org/wiki/Special:FilePath/CNBC_Arabia_2025.svg" alt="CNBC Arabia" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
         </div>
       </div>
     </section>

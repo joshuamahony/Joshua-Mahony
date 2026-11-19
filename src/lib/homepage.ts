@@ -28,7 +28,7 @@ export function applyHomepageData(html:string, data:Home){
    s=swap(s,/(<h2 class="section-heading" id="about-title">)[\s\S]*?(<\/h2>)/,'$1'+e(data.about.headline)+'$2','about heading');
    s=swap(s,/(<div class="about-copy">[\s\S]*?<\/h2>\s*<p>)[\s\S]*?(<\/p>)/,'$1'+e(data.about.paragraph1)+'$2','about p1');
    s=swap(s,/(<div class="about-copy">[\s\S]*?<\/h2>\s*<p>[\s\S]*?<\/p>\s*<p>)[\s\S]*?(<\/p>)/,'$1'+e(data.about.paragraph2)+'$2','about p2');
-   const expertise=data.about.expertise.map((x,i)=>'<div class="expertise-row"><span class="expertise-number">'+String(i+1).padStart(2,'0')+'</span><div><h3>'+e(x.title)+'</h3><p>'+e(x.description)+'</p></div></div>').join('\n');
+   const expertise=data.about.expertise.map((x,i)=>'<div class="expertise-row"><div><h3>'+e(x.title)+'</h3><p>'+e(x.description)+'</p></div></div>').join('\n');
    s=swap(s,/(<div class="expertise" aria-label="Areas of expertise">)[\s\S]*?(<\/div>\s*<\/div>\s*<!-- Professional highlights)/,'$1'+expertise+'</div>\n        </div>\n        <!-- Professional highlights','expertise');
    const stats=data.stats.map(x=>'<div class="stat"><strong>'+e(x.value)+'</strong><span>'+e(x.label)+'</span></div>').join('');
    s=swap(s,/(<div class="stats-strip" aria-label="Professional highlights">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/section>)/,'$1'+stats+'</div>\n      </div>\n    </section>','stats');
@@ -44,7 +44,7 @@ export function applyHomepageData(html:string, data:Home){
    return s;
  });
  out=section(out,'<section class="services','</section>',s=>{
-   const services=data.services.map((v,i)=>'<article class="service-card"><span class="service-number">'+String(i+1).padStart(2,'0')+' /</span><h3>'+e(v.title)+'</h3><p>'+e(v.description)+'</p><a href="'+e(mailto(data.contact.email,v.subject))+'">Enquire about services ↗</a></article>').join('');
+   const services=data.services.map((v,i)=>'<article class="service-card"><h3>'+e(v.title)+'</h3><p>'+e(v.description)+'</p><a href="'+e(mailto(data.contact.email,v.subject))+'">Enquire about services ↗</a></article>').join('');
    return swap(s,/(<div class="service-grid">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/section>)/,'$1'+services+'</div>\n      </div>\n    </section>','services');
  });
  out=section(out,'<section class="contact"','</section>',s=>{

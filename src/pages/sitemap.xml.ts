@@ -64,6 +64,9 @@ export const GET: APIRoute = async () => {
   const urls: Array<{ path: string; lastmod?: string }> = [
     { path: '/' },
     { path: '/commentary/' },
+    { path: '/broadcast-commentator/' },
+    { path: '/financial-market-analysis/' },
+    { path: '/financial-content-creator/' },
   ];
 
   // Article filenames are the permanent URL identifiers in this Astro site.

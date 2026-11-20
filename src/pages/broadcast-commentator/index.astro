@@ -1,0 +1,21 @@
+---
+import EditorialLayout from '../layouts/EditorialLayout.astro';
+const email = 'contact@joshua-mahony.com';
+const subject = "Broadcast commentary enquiry";
+const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
+---
+<EditorialLayout title="Financial Market Commentator for TV, Radio & Media" description="Book Joshua Mahony, a London-based financial market analyst, for television, radio, podcasts and financial news commentary on FX, macroeconomics, central banks and commodities.">
+  <div class="editorial-wrap">
+    <a class="editorial-back" href="/#services">← Back to services</a>
+    <div class="editorial-label">Broadcast & media</div>
+    <h1 class="editorial-title">Financial market commentary for broadcast.</h1>
+    <p class="editorial-summary">Clear, timely financial markets analysis for television, radio, podcasts and digital news. Joshua Mahony provides accessible perspectives on macroeconomic developments, currencies, commodities, equities and central bank decisions.</p>
+    <section class="editorial-body" style="margin-top:42px"><h2>Market commentary for live coverage</h2><p>From central bank decisions and economic data to unexpected market moves, commentary is tailored to the format, audience and time available. Topics include inflation and interest rates, the US dollar, oil and gold, cross-asset markets and geopolitical developments.</p></section>
+    <section class="editorial-body" style="margin-top:42px"><h2>Experience on air</h2><p>Joshua has appeared across major international news networks, including BBC, TRT World, CGTN Europe, CNBC Arabia and other broadcasters. His portfolio includes recent interview clips and examples of market coverage.</p></section>
+    <section class="editorial-body" style="margin-top:42px"><h2>For producers and journalists</h2><p>Use the contact link to enquire about interviews, comment requests, panel discussions or recurring broadcast contributions. Include your network, proposed topic and deadline so the enquiry can be assessed quickly.</p></section>
+    <div style="margin-top:48px;border-top:1px solid #e2e7e8;padding-top:30px" class="editorial-body">
+      <p><a href={enquiry}>Enquire about broadcast commentary ↗</a></p>
+      <p><a href="/#broadcasts">View recent broadcasts and videos ↗</a> · <a href="/commentary/">Read market commentary ↗</a></p>
+    </div>
+  </div>
+</EditorialLayout>

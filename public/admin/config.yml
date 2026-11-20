@@ -35,7 +35,9 @@ collections:
         widget: string
         required: true
         hint: "Choose before first publishing. Example: gold-price-outlook. This controls the article filename and web address when initially saved. Changing it after publishing will not rename an existing article."
-        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*
+        pattern:
+          - "^[a-z0-9]+(-[a-z0-9]+)*$"
+          - "Use lowercase letters, numbers and hyphens only (no spaces)."
       - { label: Publish date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
       - { label: Category, name: category, widget: select, options: ["Macroeconomics", "FX & Currencies", "Commodities", "Equities", "Central Banks", "Market Outlook"] }
       - { label: Summary, name: description, widget: text, hint: "Shown on the homepage, article archive and search results." }

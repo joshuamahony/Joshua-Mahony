@@ -1,5 +1,6 @@
 ---
 import EditorialLayout from '../../layouts/EditorialLayout.astro';
+import VideoShowcase from '../../components/VideoShowcase.astro';
 const email = 'contact@joshua-mahony.com';
 const subject = "Webinars and content enquiry";
 const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
@@ -13,6 +14,7 @@ const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
     <section class="editorial-body" style="margin-top:42px"><h2>Short-form and long-form video</h2><p>Ideas include reactive market explainers, economic-event previews, educational short videos and deeper market analysis. Content can be tailored for YouTube, social platforms, websites and client communications.</p></section>
     <section class="editorial-body" style="margin-top:42px"><h2>Webinars and hosted sessions</h2><p>Live market outlooks, financial education webinars, Q&A sessions and hosted discussions covering market themes and trading concepts.</p></section>
     <section class="editorial-body" style="margin-top:42px"><h2>Collaborations and content partnerships</h2><p>For potential projects, share the platform, target audience, proposed frequency and delivery format. View existing videos on the homepage as examples of presentation style.</p></section>
+    <VideoShowcase type="creator" heading="Video content examples" description="Long-form market analysis and a short-form news reaction, showing different formats and presentation styles." />
     <div style="margin-top:48px;border-top:1px solid #e2e7e8;padding-top:30px" class="editorial-body">
       <p><a href={enquiry}>Enquire about content production ↗</a></p>
       <p><a href="/#broadcasts">View recent broadcasts and videos ↗</a> · <a href="/commentary/">Read market commentary ↗</a></p>

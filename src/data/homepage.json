@@ -2,14 +2,14 @@
   "hero": {
     "eyebrow": "London-based / Global perspective",
     "name": "Joshua Mahony",
-    "role": "Financial Market Analyst & Broadcast Commentator",
-    "introduction": "Independent macroeconomic, FX, and commodities commentary, live broadcast analysis, and multimedia content. London-based financial market specialist",
+    "role": "Financial Market Analyst, Broadcast Commentator & Content Creator",
+    "introduction": "London-based financial market analyst providing independent macroeconomic, FX and commodities commentary for broadcasters and financial firms, alongside financial videos, webinars and content production for professional audiences.",
     "headshot": "/uploads/portrait-photo.jpg"
   },
   "about": {
     "headline": "Making sense of moving markets.",
-    "paragraph1": "I'm a London-based financial market analyst and broadcast commentator specialising in global macroeconomics, foreign exchange, and commodities.",
-    "paragraph2": "I turn complex financial developments into clear, timely insights — whether that means explaining a central bank decision live on air, writing a market outlook, or producing engaging content for investors and wider audiences.",
+    "paragraph1": "I'm a London-based financial market analyst, broadcast commentator and financial content creator covering global macroeconomics, foreign exchange, commodities and cross-asset markets.",
+    "paragraph2": "I provide independent analysis for broadcasters and financial firms, while producing presenter-led videos, webinars, written commentary and educational content that makes complex markets understandable.",
     "expertise": [
       {
         "title": "Macroeconomics & central banks",
@@ -101,17 +101,17 @@
   "services": [
     {
       "title": "Broadcast & Media Commentary",
-      "description": "Clear, confident market perspectives for TV, radio, live interviews and podcasts.",
+      "description": "Independent financial market commentary and live analysis for television, radio, podcasts and financial news.",
       "subject": "Broadcast commentary enquiry"
     },
     {
       "title": "Research & Written Analysis",
-      "description": "Bespoke client notes, broker research commentary and editorial market analysis.",
+      "description": "Bespoke market research, macroeconomic outlooks and written commentary for brokers, publishers and financial firms.",
       "subject": "Research and analysis enquiry"
     },
     {
       "title": "Webinars & Content Production",
-      "description": "Live market outlooks, hosted sessions, educational videos and multimedia briefings.",
+      "description": "Financial videos, webinars, educational explainers and presenter-led content for brokers, fintech brands and media.",
       "subject": "Webinars and content enquiry"
     }
   ],

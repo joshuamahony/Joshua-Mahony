@@ -44,7 +44,8 @@ export function applyHomepageData(html:string, data:Home){
    return s;
  });
  out=section(out,'<section class="services','</section>',s=>{
-   const services=data.services.map((v,i)=>'<article class="service-card"><h3>'+e(v.title)+'</h3><p>'+e(v.description)+'</p><a href="'+e(mailto(data.contact.email,v.subject))+'">Enquire about services ↗</a></article>').join('');
+   const servicePages=['/broadcast-commentator/','/financial-market-analysis/','/financial-content-creator/'];
+   const services=data.services.map((v,i)=>'<article class="service-card"><h3>'+e(v.title)+'</h3><p>'+e(v.description)+'</p><a href="'+e(servicePages[i]||'/#contact')+'">Explore this service ↗</a></article>').join('');
    return swap(s,/(<div class="service-grid">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/section>)/,'$1'+services+'</div>\n      </div>\n    </section>','services');
  });
  out=section(out,'<section class="contact"','</section>',s=>{

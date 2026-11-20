@@ -1,0 +1,21 @@
+---
+import EditorialLayout from '../layouts/EditorialLayout.astro';
+const email = 'contact@joshua-mahony.com';
+const subject = "Webinars and content enquiry";
+const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
+---
+<EditorialLayout title="Financial Content Creator, Video Presenter & Webinar Host" description="Financial video content, market explainers, webinars and presenter-led education for brokers, fintech businesses and financial media from analyst and broadcaster Joshua Mahony.">
+  <div class="editorial-wrap">
+    <a class="editorial-back" href="/#services">← Back to services</a>
+    <div class="editorial-label">Video, content & education</div>
+    <h1 class="editorial-title">Financial content built for clarity and engagement.</h1>
+    <p class="editorial-summary">Presenter-led financial content for brokers, fintech brands, publishers and other financial businesses. Joshua combines markets knowledge with broadcast communication to explain complex topics through accessible video, audio and live formats.</p>
+    <section class="editorial-body" style="margin-top:42px"><h2>Short-form and long-form video</h2><p>Ideas include reactive market explainers, economic-event previews, educational short videos and deeper market analysis. Content can be tailored for YouTube, social platforms, websites and client communications.</p></section>
+    <section class="editorial-body" style="margin-top:42px"><h2>Webinars and hosted sessions</h2><p>Live market outlooks, financial education webinars, Q&A sessions and hosted discussions covering market themes and trading concepts.</p></section>
+    <section class="editorial-body" style="margin-top:42px"><h2>Collaborations and content partnerships</h2><p>For potential projects, share the platform, target audience, proposed frequency and delivery format. View existing videos on the homepage as examples of presentation style.</p></section>
+    <div style="margin-top:48px;border-top:1px solid #e2e7e8;padding-top:30px" class="editorial-body">
+      <p><a href={enquiry}>Enquire about content production ↗</a></p>
+      <p><a href="/#broadcasts">View recent broadcasts and videos ↗</a> · <a href="/commentary/">Read market commentary ↗</a></p>
+    </div>
+  </div>
+</EditorialLayout>

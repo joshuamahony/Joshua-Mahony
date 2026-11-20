@@ -19,10 +19,36 @@
     if (!window.CMS || !window.createClass || !window.h) return;
 
     function slugify(text) {
-      return String(text || '')
+      var full = String(text || '')
         .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
         .toLowerCase().replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '').replace(/-+/g, '-');
+
+      // Keep ordinary headlines intact. Shorten only long, unwieldy URLs.
+      var words = full ? full.split('-') : [];
+      if (full.length <= 65 && words.length <= 9) return full;
+
+      // Keep negations ("not", "no", "without") and all numbers.
+      // This is a conservative suggestion, not an AI summary.
+      var filler = new Set([
+        'a', 'an', 'the', 'and', 'or', 'but', 'as', 'at', 'by', 'for',
+        'from', 'in', 'into', 'of', 'on', 'onto', 'to', 'with',
+        'is', 'are', 'was', 'were', 'be', 'been', 'being',
+        'this', 'that', 'these', 'those', 'it', 'its',
+        'could', 'would', 'should', 'might', 'may', 'can',
+        'actually', 'really', 'just', 'very', 'why', 'how',
+        'what', 'when', 'where', 'setting', 'up'
+      ]);
+      var important = words.filter(function (word) { return !filler.has(word); });
+      if (important.length < 3) important = words;
+
+      var selected = [];
+      for (var i = 0; i < important.length && selected.length < 7; i++) {
+        var trial = selected.concat(important[i]).join('-');
+        if (trial.length > 60 && selected.length >= 3) break;
+        selected.push(important[i]);
+      }
+      return selected.join('-') || full;
     }
     function headlineInput() {
       var labels = Array.from(document.querySelectorAll('label'));

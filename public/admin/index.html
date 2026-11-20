@@ -9,5 +9,88 @@
 <body>
   <!-- Decap CMS loads the editor UI here. GitHub login needs a secure OAuth bridge before publishing. -->
   <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+  <script>
+  /*
+   * Custom Decap CMS widget: suggests an article URL slug from the headline,
+   * but preserves any manual edits. The slug is only used to name a NEW article.
+   * Existing article filenames/URLs are intentionally not renamed.
+   */
+  (function () {
+    if (!window.CMS || !window.createClass || !window.h) return;
+
+    function slugify(text) {
+      return String(text || '')
+        .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '').replace(/-+/g, '-');
+    }
+    function headlineInput() {
+      var labels = Array.from(document.querySelectorAll('label'));
+      for (var i = 0; i < labels.length; i++) {
+        if (labels[i].textContent.trim() !== 'Headline') continue;
+        if (labels[i].control && labels[i].control.tagName === 'INPUT') return labels[i].control;
+        if (labels[i].htmlFor) {
+          var matched = document.getElementById(labels[i].htmlFor);
+          if (matched && matched.tagName === 'INPUT') return matched;
+        }
+        var parent = labels[i].parentElement;
+        for (var n = 0; n < 4 && parent; n++, parent = parent.parentElement) {
+          var field = parent.querySelector('input[type="text"], input:not([type])');
+          if (field) return field;
+        }
+      }
+      return document.querySelector('input[id*="title"], input[name="title"]');
+    }
+
+    var AutoSlugControl = createClass({
+      componentDidMount: function () {
+        this.lastSuggested = '';
+        this.manuallyEdited = false;
+        this.bindHeadline();
+      },
+      componentDidUpdate: function () {
+        if (!this.titleInput || !document.contains(this.titleInput)) this.bindHeadline();
+      },
+      componentWillUnmount: function () {
+        if (this.titleInput) this.titleInput.removeEventListener('input', this.titleHandler);
+      },
+      bindHeadline: function () {
+        var input = headlineInput();
+        if (!input) return;
+        if (this.titleInput && this.titleHandler) this.titleInput.removeEventListener('input', this.titleHandler);
+        this.titleInput = input;
+        var self = this;
+        this.titleHandler = function () {
+          var suggestion = slugify(input.value);
+          var current = String(self.props.value || '');
+          if (!self.manuallyEdited && (!current || current === self.lastSuggested)) {
+            if (current !== suggestion) self.props.onChange(suggestion);
+          }
+          self.lastSuggested = suggestion;
+        };
+        input.addEventListener('input', this.titleHandler);
+        this.titleHandler();
+      },
+      onSlugChange: function (event) {
+        var value = event.target.value;
+        this.manuallyEdited = Boolean(value);
+        this.props.onChange(value);
+      },
+      render: function () {
+        return h('input', {
+          id: this.props.forID,
+          className: this.props.classNameWrapper,
+          type: 'text',
+          autoComplete: 'off',
+          value: this.props.value || '',
+          placeholder: 'Automatically generated from headline',
+          onChange: this.onSlugChange,
+          'aria-label': 'URL Slug'
+        });
+      }
+    });
+    CMS.registerWidget('auto_slug', AutoSlugControl);
+  }());
+</script>
 </body>
 </html>

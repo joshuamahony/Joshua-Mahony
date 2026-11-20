@@ -13,7 +13,7 @@ const { article } = Astro.props;
 const { Content } = await render(article);
 const { title, description, date, category, image } = article.data;
 ---
-<EditorialLayout title={title} description={description} image={image}>
+<EditorialLayout title={title} description={description} image={image} datePublished={date}>
   <article class="editorial-wrap">
     <a class="editorial-back" href="/commentary/">← All commentary</a>
     <div class="editorial-label">{category}</div>

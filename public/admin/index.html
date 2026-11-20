@@ -100,8 +100,8 @@
         // Also replace an earlier unshortened automatic suggestion,
         // while preserving manually entered slugs and existing article URLs.
         var full = String(title || '').normalize('NFKD')
-          .replace(/[\\u0300-\\u036f]/g, '')
-          .toLowerCase().replace(/[’']s\\b/g, '').replace(/[’']/g, '')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase().replace(/[’']s\b/g, '').replace(/[’']/g, '')
           .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         if (!this.manuallyEdited &&
             (!current || current === this.lastSuggested || current === full)) {

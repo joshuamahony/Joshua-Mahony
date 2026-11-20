@@ -32,9 +32,9 @@ collections:
       - { label: Headline, name: title, widget: string }
       - label: URL Slug
         name: url_slug
-        widget: string
+        widget: auto_slug
         required: true
-        hint: "Choose before first publishing. Example: gold-price-outlook. This controls the article filename and web address when initially saved. Changing it after publishing will not rename an existing article."
+        hint: "Suggested automatically from the headline. You can edit this before first publishing. Existing article URLs are not renamed automatically."
         pattern:
           - "^[a-z0-9]+(-[a-z0-9]+)*$"
           - "Use lowercase letters, numbers and hyphens only (no spaces)."

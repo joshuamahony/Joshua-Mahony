@@ -1,5 +1,6 @@
 ---
 import EditorialLayout from '../../layouts/EditorialLayout.astro';
+import VideoShowcase from '../../components/VideoShowcase.astro';
 const email = 'contact@joshua-mahony.com';
 const subject = "Research and analysis enquiry";
 const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
@@ -13,6 +14,7 @@ const enquiry = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
     <section class="editorial-body" style="margin-top:42px"><h2>Coverage across global markets</h2><p>Macro and monetary policy, FX and rates, equity indices, gold, oil and industrial metals. Commentary connects market moves with the underlying economic and policy developments.</p></section>
     <section class="editorial-body" style="margin-top:42px"><h2>Written market commentary</h2><p>Potential formats include timely market reactions, weekly outlooks, event previews, educational explainers and longer-form analysis. Work can be adapted to a client's audience, publishing schedule and editorial needs.</p></section>
     <section class="editorial-body" style="margin-top:42px"><h2>See published analysis</h2><p>Explore the market commentary archive for recent examples. For bespoke commissions, get in touch with the intended audience, format and subject matter.</p></section>
+    <VideoShowcase type="analysis" heading="Long-form market analysis examples" description="Examples of deeper financial market explainers and outlooks alongside the written commentary archive." />
     <div style="margin-top:48px;border-top:1px solid #e2e7e8;padding-top:30px" class="editorial-body">
       <p><a href={enquiry}>Enquire about research & analysis ↗</a></p>
       <p><a href="/#broadcasts">View recent broadcasts and videos ↗</a> · <a href="/commentary/">Read market commentary ↗</a></p>

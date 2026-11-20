@@ -12,7 +12,7 @@
   <script>
   /*
    * Custom Decap CMS widget: suggests an article URL slug from the headline,
-   * using Decap's entry data instead of relying on DOM event listeners,\n   * while preserving any manual edits. The slug is only used to name a NEW article.
+   * by observing the Headline input while preserving manual edits. The slug is only used to name a NEW article.
    * Existing article filenames/URLs are intentionally not renamed.
    */
   (function () {
@@ -69,45 +69,54 @@
       return document.querySelector('input[id*="title"], input[name="title"]');
     }
 
+    // Decap control widgets do not receive the full entry as a documented prop.
+    // Observe the Headline input, as in the original working implementation.
+    function headlineInput() {
+      var labels = Array.from(document.querySelectorAll('label'));
+      for (var i = 0; i < labels.length; i++) {
+        if (labels[i].textContent.trim() !== 'Headline') continue;
+        if (labels[i].control && labels[i].control.tagName === 'INPUT') return labels[i].control;
+        if (labels[i].htmlFor) {
+          var matched = document.getElementById(labels[i].htmlFor);
+          if (matched && matched.tagName === 'INPUT') return matched;
+        }
+        var parent = labels[i].parentElement;
+        for (var n = 0; n < 4 && parent; n++, parent = parent.parentElement) {
+          var field = parent.querySelector('input[type="text"], input:not([type])');
+          if (field) return field;
+        }
+      }
+      return document.querySelector('input[id*="title"], input[name="title"]');
+    }
+
     var AutoSlugControl = createClass({
       componentDidMount: function () {
         this.lastSuggested = '';
         this.manuallyEdited = false;
-        this.previousTitle = this.getHeadline();
-        // An existing article may already have an intentional URL; don't rewrite it.
-        if (!this.props.value && this.previousTitle) {
-          this.suggestFromHeadline(this.previousTitle);
-        }
+        this.bindHeadline();
       },
       componentDidUpdate: function () {
-        // Decap passes the complete editor entry to custom widget controls.
-        // React updates this widget whenever the headline changes.
-        var title = this.getHeadline();
-        if (title !== this.previousTitle) {
-          this.previousTitle = title;
-          this.suggestFromHeadline(title);
-        }
+        if (!this.titleInput || !document.contains(this.titleInput)) this.bindHeadline();
       },
-      getHeadline: function () {
-        var entry = this.props.entry;
-        return entry && typeof entry.getIn === 'function'
-          ? String(entry.getIn(['data', 'title']) || '')
-          : '';
+      componentWillUnmount: function () {
+        if (this.titleInput) this.titleInput.removeEventListener('input', this.titleHandler);
       },
-      suggestFromHeadline: function (title) {
-        var suggestion = slugify(title);
-        var current = String(this.props.value || '');
-        // Also replace an earlier unshortened automatic suggestion,
-        // while preserving manually entered slugs and existing article URLs.
-        var full = String(title || '').normalize('NFKD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase().replace(/[’']s\b/g, '').replace(/[’']/g, '')
-          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-        if (!this.manuallyEdited &&
-            (!current || current === this.lastSuggested || current === full)) {
-          if (current !== suggestion) this.props.onChange(suggestion);
-        }
-        this.lastSuggested = suggestion;
+      bindHeadline: function () {
+        var input = headlineInput();
+        if (!input) return;
+        if (this.titleInput && this.titleHandler) this.titleInput.removeEventListener('input', this.titleHandler);
+        this.titleInput = input;
+        var self = this;
+        this.titleHandler = function () {
+          var suggestion = slugify(input.value);
+          var current = String(self.props.value || '');
+          if (!self.manuallyEdited && (!current || current === self.lastSuggested)) {
+            if (current !== suggestion) self.props.onChange(suggestion);
+          }
+          self.lastSuggested = suggestion;
+        };
+        input.addEventListener('input', this.titleHandler);
+        this.titleHandler();
       },
       onSlugChange: function (event) {
         this.manuallyEdited = true;

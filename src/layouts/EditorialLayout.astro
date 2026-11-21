@@ -90,7 +90,21 @@ const menuScript = `
       .archive-entry h2 a:hover { text-decoration: underline; }
       .archive-entry p { color: #536376; margin: 0; }
       .archive-meta { font-size: 12px; color: #987b56; text-transform: uppercase; letter-spacing: .07em; }
-      @media(max-width: 600px) { .editorial-wrap { padding: 45px 0 65px; } .editorial-body { font-size: 16px; } }
+      @media(max-width: 600px) {
+        .editorial-wrap { width: calc(100% - 36px); padding: 32px 0 58px; }
+        .editorial-label { margin-top: 34px; }
+        .editorial-title { font-size: clamp(34px, 9vw, 44px); line-height: 1.13; overflow-wrap: break-word; }
+        .editorial-summary { font-size: 17px; line-height: 1.62; }
+        .editorial-body { font-size: 16px; line-height: 1.7; }
+        .editorial-body h2 { font-size: 27px; }
+        .editorial-body h3 { font-size: 22px; }
+        .editorial-body a, .editorial-back { overflow-wrap: anywhere; }
+        .archive-entry h2 { font-size: 25px; overflow-wrap: break-word; }
+      }
+      @media(max-width: 380px) {
+        .editorial-title { font-size: 33px; }
+        .editorial-wrap { width: calc(100% - 32px); }
+      }
     </style>
   </head>
   <body>

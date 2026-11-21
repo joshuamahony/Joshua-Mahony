@@ -33,12 +33,12 @@ const validLink = (value: string) => {
         <article class="showcase-card">
           {validLink(video.url) ? (
             <a class="showcase-thumb" href={validLink(video.url)} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${video.title} on ${video.network}`}>
-              {video.thumbnail ? <img src={video.thumbnail} alt="" loading="lazy" /> : <span class="showcase-placeholder">{video.network}</span>}
+              {video.thumbnail ? <img src={video.thumbnail} alt="" loading="lazy" decoding="async" /> : <span class="showcase-placeholder">{video.network}</span>}
               <span class="showcase-play" aria-hidden="true">▶</span>
             </a>
           ) : (
             <div class="showcase-thumb">
-              {video.thumbnail && <img src={video.thumbnail} alt="" loading="lazy" />}
+              {video.thumbnail && <img src={video.thumbnail} alt="" loading="lazy" decoding="async" />}
             </div>
           )}
           <div class="showcase-meta">{video.network} · {format(video.type)}</div>
@@ -67,5 +67,11 @@ const validLink = (value: string) => {
   .showcase-card p { color: #536376; font-size: 14px; line-height: 1.6; margin: 0 0 10px; }
   .showcase-link,.showcase-more a { color: #8e6e3f; text-decoration: underline; font-size: 14px; font-weight: 700; }
   .showcase-more { margin: 24px 0 0; }
-  @media (max-width:600px) { .showcase-grid { grid-template-columns: 1fr; gap: 30px; } }
+  @media (max-width:600px) {
+    .showcase { margin-top: 42px; padding-top: 20px; }
+    .showcase-grid { grid-template-columns: 1fr; gap: 28px; }
+    .showcase-heading { font-size: 30px; }
+    .showcase-thumb { aspect-ratio: 16 / 9; }
+    .showcase-link, .showcase-more a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
 </style>

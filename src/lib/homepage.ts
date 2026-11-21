@@ -37,7 +37,7 @@ export function applyHomepageData(html:string, data:Home){
  out=section(out,'<section class="broadcasts','</section>',s=>{
    const rendered=data.broadcasts.map((v,i)=>{
      const theme='theme-'+(i%6+1);
-     const image=v.thumbnail?'<img src="'+safeUrl(v.thumbnail)+'" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />':'';
+     const image=v.thumbnail?'<img src="'+safeUrl(v.thumbnail)+'" alt="" loading="lazy" decoding="async" sizes="(max-width: 520px) 100vw, (max-width: 760px) 50vw, 33vw" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />':'';
      return '<article class="video-card" data-type="'+e(v.type)+'"><a class="video-thumb '+theme+'" href="'+safeUrl(v.url)+'" target="_blank" rel="noopener noreferrer" aria-label="Watch '+e(v.title)+'">'+image+'<span class="play-button" aria-hidden="true"></span></a><div class="video-info"><div class="video-meta"><span class="network">'+e(v.network)+'</span><span class="bullet">·</span><time>'+e(v.date||'DATE TO ADD')+'</time></div><h3>'+e(v.title)+'</h3><p>'+e(v.summary)+'</p></div></article>';
    }).join('\n');
    s=swap(s,/(<div class="video-grid" id="video-grid">)[\s\S]*?(<\/div>\s*<p class="placeholder-note">)/,'$1'+rendered+'</div>\n        <p class="placeholder-note">','video grid');
